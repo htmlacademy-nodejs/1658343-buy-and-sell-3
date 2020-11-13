@@ -1,7 +1,7 @@
 # Учебный проект «Куплю. Продам» [![Build status][travis-image]][travis-url]
 
 * Студент: [Алексей](https://up.htmlacademy.ru/nodejs/3/user/1658343).
-* Наставник: Никита Куцелай.
+* Наставник: [Никита Куцелай](https://htmlacademy.ru/profile/id32750).
 
 ---
 
