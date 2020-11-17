@@ -1,6 +1,6 @@
 "use strict";
-const utils = require(`../../utils`);
 const fs = require(`fs`);
+const utils = require(`../../utils`);
 
 const DEFAULT_COUNT = 1;
 
@@ -64,9 +64,8 @@ const generateOffers = (count) =>
 
 module.exports = {
   name: `--generate`,
-  run(args) {
-    const [count] = args;
-
+  run(count) {
+    console.log(count);
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generateOffers(countOffer), null, 4);
 
