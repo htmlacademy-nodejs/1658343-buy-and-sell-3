@@ -1,5 +1,5 @@
 "use strict";
-const utils = require('../../utils');
+const utils = require(`../../utils`);
 const fs = require(`fs`);
 
 const DEFAULT_COUNT = 1;
@@ -41,11 +41,11 @@ const SumRestrict = {
 
 const PictureRestrict = {
   MIN: 1,
-  MAX: 16
-}
+  MAX: 16,
+};
 
 const getPictureFileName = (min) => {
-  return min>=10 ? `item${min}.jpg` : `item0${min}.jpg`
+  return min >= 10 ? `item${min}.jpg` : `item0${min}.jpg`;
 };
 
 const generateOffers = (count) =>
@@ -58,14 +58,10 @@ const generateOffers = (count) =>
       title: TITLES[utils.getRandomInt(0, TITLES.length - 1)],
       description: utils.shuffle(SENTENCES).slice(1, 5).join(` `),
       sum: utils.getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
-      picture: getPictureFileName(
-        utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)
-      ),
+      picture: getPictureFileName(utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
       category: [CATEGORIES[utils.getRandomInt(0, CATEGORIES.length - 1)]],
     }));
 
-
-    
 module.exports = {
   name: `--generate`,
   run(args) {

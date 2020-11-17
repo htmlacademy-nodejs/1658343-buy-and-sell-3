@@ -1,9 +1,9 @@
-'use strict'
+"use strict";
 
 module.exports = {
-    name: `--help`,
-    run() {
-      const help = `Программа запускает http-сервер и формирует файл с данными для API.
+  name: `--help`,
+  run() {
+    const help = `Программа запускает http-сервер и формирует файл с данными для API.
 
       Гайд:
       service.js <command>
@@ -13,6 +13,6 @@ module.exports = {
       --help:               печатает этот текст
       --generate <count>    формирует файл mocks.json`;
 
-      console.info(help);
-    }
-  };
+    console.info(help);
+  },
+};
