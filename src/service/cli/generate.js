@@ -2,6 +2,7 @@
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
 const utils = require(`../../utils`);
+const {ExitCode} = require(`../constants`);
 
 const FILE_SENTENCES_PATH = `./data/sentences.txt`;
 const FILE_TITLES_PATH = `./data/titles.txt`;
@@ -50,26 +51,24 @@ const generateOffers = (count, titles, categories, sentences) =>
       title: titles[utils.getRandomInt(0, titles.length - 1)],
       description: utils.shuffle(sentences).slice(1, 5).join(` `),
       sum: utils.getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
-      picture: getPictureFileName(
-        utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)
-      ),
+      picture: getPictureFileName(utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
       category: [categories[utils.getRandomInt(0, categories.length - 1)]],
     }));
 
 module.exports = {
   name: `--generate`,
   async run(count) {
-    // Считываем контент из файлов
+    if (+count > 1000) {
+      console.error(chalk.red(`Не больше 1000 объявлений`));
+      process.exit(ExitCode.error);
+    }
+
     const sentences = await readContent(FILE_SENTENCES_PATH);
     const titles = await readContent(FILE_TITLES_PATH);
     const categories = await readContent(FILE_CATEGORIES_PATH);
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
-    
-    const content = JSON.stringify(
-      generateOffers(countOffer, titles, categories, sentences),
-      null,
-      4
-    );
+
+    const content = JSON.stringify(generateOffers(countOffer, titles, categories, sentences), null, 4);
 
     try {
       await fs.writeFile(FILE_NAME, content);
