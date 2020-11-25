@@ -59,14 +59,15 @@ const generateOffers = (count) =>
       title: TITLES[utils.getRandomInt(0, TITLES.length - 1)],
       description: utils.shuffle(SENTENCES).slice(1, 5).join(` `),
       sum: utils.getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
-      picture: getPictureFileName(utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)),
+      picture: getPictureFileName(
+          utils.getRandomInt(PictureRestrict.MIN, PictureRestrict.MAX)
+      ),
       category: [CATEGORIES[utils.getRandomInt(0, CATEGORIES.length - 1)]],
     }));
 
 module.exports = {
   name: `--generate`,
   async run(count) {
-    
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generateOffers(countOffer), null, 4);
 
