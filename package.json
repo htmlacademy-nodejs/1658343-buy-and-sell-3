@@ -4,6 +4,7 @@
   "description": "Куплю. Продам",
   "main": "./src/service/service.js",
   "scripts": {
+    "server": "nodemon ./src/service/service.js --server",
     "test": "npm run eslint",
     "start": "node ./src/service/service.js",
     "eslint": "eslint --ext .js src/",
@@ -21,7 +22,8 @@
   "homepage": "https://github.com/leshareva/1658343-typoteka-3#readme",
   "devDependencies": {
     "eslint": "7.13.0",
-    "eslint-config-htmlacademy": "0.6.0"
+    "eslint-config-htmlacademy": "0.6.0",
+    "nodemon": "2.0.6"
   },
   "dependencies": {
     "chalk": "4.1.0",
